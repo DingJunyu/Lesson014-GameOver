@@ -19,5 +19,6 @@ public class Camera : MonoBehaviour
 
         // 角度の調整
         transform.LookAt(Target);
+
     }
 }

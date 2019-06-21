@@ -26,16 +26,17 @@ public class Player : MonoBehaviour
     {
         // 入力
         InputControll();
+        /*マップに穴がないため、ここは落ちる状態を模倣しました*/
         if (dead && transform.position.y > -5f) {
             Vector3 vector3 = transform.position;
-            Vector3 down = new Vector3( 0, dropSpeed, 0 );
-            dropSpeed += 0.0025f;
-            vector3 -= down;
-            TargetVector.y = transform.position.y;
+            dropSpeed += 0.0025f;//落下速度を増やす
+            vector3.y -= dropSpeed;//落下する
+            TargetVector.y = transform.position.y;//垂直の移動を無効化にする
 
             Rg.transform.SetPositionAndRotation(vector3,
                 transform.rotation);//下に落ちる
-            transform.position = Vector3.MoveTowards(transform.position, TargetVector, Time.deltaTime * 1f);
+
+            transform.position = Vector3.MoveTowards(transform.position, TargetVector, Time.deltaTime * 1f);//水平移動
         }
         if (transform.position.y < -2f && !dead) {
             GameObject.Find("GameRoot").GetComponent<Root>().SetGameOver();

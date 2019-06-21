@@ -45,10 +45,10 @@ public class Root : MonoBehaviour
             ClearMess.enabled = true;
         }
 
-        if (GameOver&&!ClearText.enabled) {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>().enabled = false;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().SetDeath();
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().isKinematic = true;
+        if (GameOver&&!ClearText.enabled) {//ゲームオーバーの時に一回だけを呼び出す
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>().enabled = false;//プレーヤーのcolliderを無効にする
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().SetDeath();//プレーヤーの状態を死亡に設置する
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().isKinematic = true;//物理演算を無効にする
 
             ClearText.text = "GameOver";
             ClearText.fontSize = 90;
